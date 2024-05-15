@@ -1,0 +1,33 @@
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+@SpringBootApplication
+@RestController
+public class ChatApi {
+
+    private final RestTemplate restTemplate;
+
+    public ChatApi(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(ChatApi.class, args);
+    }
+
+    @PostMapping("/chat")
+    public String chat(@RequestBody String query) {
+        // Generate response using language model
+        String response = generateResponse(query);
+        return response;
+    }
+
+    private String generateResponse(String query) {
+        // Use a language model to generate response
+        // Implement your logic here
+    }
+}
