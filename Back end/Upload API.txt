@@ -1,0 +1,40 @@
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@SpringBootApplication
+@RestController
+public class UploadApi {
+
+    public static void main(String[] args) {
+        SpringApplication.run(UploadApi.class, args);
+    }
+
+    @PostMapping("/upload")
+    public String uploadText(@RequestBody String text) {
+        // Convert text into chunks
+        List<String> chunks = getChunks(text);
+        // Generate embeddings for each chunk
+        List<double[]> embeddings = generateEmbeddings(chunks);
+        // Store embeddings in vector DB
+        storeEmbeddings(embeddings);
+        return "Text uploaded and embeddings stored successfully.";
+    }
+
+    private List<String> getChunks(String text) {
+        // Split text into chunks
+        // Implement your logic here
+    }
+
+    private List<double[]> generateEmbeddings(List<String> chunks) {
+        // Generate embeddings for each chunk
+        // Implement your logic here
+    }
+
+    private void storeEmbeddings(List<double[]> embeddings) {
+        // Store embeddings in vector DB
+        // Implement your logic here
+    }
+}
